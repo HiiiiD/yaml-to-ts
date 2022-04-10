@@ -1,0 +1,16 @@
+node_modules
+.env
+coverage
+env.local.yml
+env.test.yml
+env.prod.yml
+src/scripts/fixDev.js
+.vscode/launch.json
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+build
