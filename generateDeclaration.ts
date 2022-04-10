@@ -97,9 +97,9 @@ type BuildConfig = {
 };
 
 /**
- * Build the env
+ * Build the declaration file
  */
-export const buildEnv = async (jsonObj: object, configs: BuildConfig) => {
+export const build = async (jsonObj: object, configs: BuildConfig) => {
     const objectInterfaceDeclaration = generateDeclaration(jsonObj);
 
     const stringDeclaration = generateStringDeclaration(

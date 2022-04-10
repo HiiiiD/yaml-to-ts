@@ -1,9 +1,9 @@
 {
-    "name": "build-env",
+    "name": "yaml-to-ts",
     "version": "1.0.0",
     "description": "Build TS interface declaration from yml file",
     "type": "module",
-    "main": "build/build-env.js",
+    "main": "build/yaml-to-ts.js",
     "types": "./lib/main.d.ts",
     "scripts": {
         "build": "tsc"
@@ -22,7 +22,7 @@
         "typescript": "^4.6.3"
     },
     "bin": {
-        "build-env": "build/build-env.js"
+        "yaml-to-ts": "build/yaml-to-ts.js"
     },
     "packageManager": "yarn@3.2.0"
 }

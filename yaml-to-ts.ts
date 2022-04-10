@@ -5,20 +5,20 @@ import * as path from 'path';
 import prettier from 'prettier';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { buildEnv } from './generateDeclaration.js';
+import { build } from './generateDeclaration.js';
 
 const parsedArgs = hideBin(process.argv);
 
 yargs(parsedArgs)
     .command(
         '$0 <input-file> [--prettier-file prettier-file-URI] [--out-file out-file-URI] [--dry-run] [--interface-name name]',
-        'Build env',
+        'Build TS interface from YAML file',
         (args) => {
             return args
                 .positional('input-file', {
                     alias: 'i',
                     type: 'string',
-                    description: 'Input file',
+                    description: 'YAML Input file',
                 })
                 .option('prettier-file', {
                     alias: 'p',
@@ -29,7 +29,7 @@ yargs(parsedArgs)
                     alias: 'o',
                     type: 'string',
                     description: 'Output file',
-                    default: path.join(process.cwd(), 'env.d.ts'),
+                    default: path.join(process.cwd(), 'declaration.d.ts'),
                 })
                 .option('dry-run', {
                     alias: 'd',
@@ -41,7 +41,7 @@ yargs(parsedArgs)
                     alias: 'int',
                     type: 'string',
                     description: 'Define interface name',
-                    default: 'EnvSchema',
+                    default: 'Declaration',
                 })
                 .strict();
         },
@@ -68,7 +68,7 @@ yargs(parsedArgs)
                 );
             }
 
-            await buildEnv(parsedYaml as object, {
+            await build(parsedYaml as object, {
                 interfaceName: argv.interfaceName,
                 outFile: argv.outFile,
                 prettierConfig,
